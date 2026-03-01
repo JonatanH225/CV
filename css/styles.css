@@ -441,3 +441,23 @@ h1, h2, h3, .h4, .lead, .subheading {
 [data-theme="light"] .border-dev .btn-secondary-icon:hover {
     color: #050608 !important; /* Mantiene texto oscuro sobre azul claro */
 }
+
+/* --- BOTÓN DE CV EN SIDEBAR --- */
+.btn-cv {
+    background-color: var(--primary) !important;
+    border: none !important;
+    color: #050608 !important; /* Texto oscuro para máxima legibilidad */
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-cv:hover {
+    transform: scale(1.05) translateY(-3px) !important;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6) !important;
+    background-color: #00e5ff !important;
+}
+
+/* Ajuste para el modo claro en el sidebar */
+[data-theme="light"] #sideNav .btn-cv {
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
