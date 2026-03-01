@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
+    <link rel="icon" type="image/png" href="assets/img/icon.png">
 </head>
 
 <body>
@@ -25,6 +26,7 @@
             <ul class="navbar-nav flex-column">
                 <li class="nav-item mb-2"><a class="nav-link text-white-50 font-weight-bold" href="#about">INICIO</a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-white-50 font-weight-bold" href="#skills">STACK TÉCNICO</a></li>
+                <li class="nav-item mb-2"><a class="nav-link text-white-50 font-weight-bold" href="#experience">EXPERIENCIA</a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-white-50 font-weight-bold" href="#projects">PROYECTOS</a></li>
             </ul>
         </div>
@@ -131,6 +133,36 @@
     
 </section>
 
+<section class="resume-section" id="experience">
+    <h3 class="mb-5 text-uppercase font-weight-800" style="letter-spacing: 3px;">Experiencia Laboral</h3>
+    
+    <div class="timeline">
+        <div class="timeline-item border-analytics">
+            <div class="timeline-date text-primary font-weight-bold">MAY 2022 - ACTUALIDAD</div>
+            <h4 class="mb-1">Data Analyst</h4>
+            <div class="text-muted font-weight-bold mb-3">Widetech Colombia</div>
+            <ul class="text-muted small pl-3">
+                <li class="mb-2"><strong>Arquitectura de Datos en AWS:</strong> Administración de entornos en la nube (EC2 y S3).</li>
+                <li class="mb-2"><strong>Procesamiento ETL & Big Data:</strong> Orquestación mediante AWS Athena y AWS Glue para datos logísticos masivos.</li>
+                <li class="mb-2"><strong>Gestión de Infraestructura BI:</strong> Administración avanzada de Power BI Service, Gateways y seguridad.</li>
+                <li class="mb-2"><strong>Ingeniería de Software:</strong> Desarrollo de scripts en Python y C# para ETL optimizando SQL/NoSQL.</li>
+                <li><strong>Optimización:</strong> Mejora de rendimiento en MySQL/MongoDB mediante reestructuración de modelos.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item border-management">
+            <div class="timeline-date text-primary font-weight-bold" style="color: #a855f7 !important;">DIC 2019 - MAY 2022</div>
+            <h4 class="mb-1">Software Documentary</h4>
+            <div class="text-muted font-weight-bold mb-3">Widetech Colombia</div>
+            <ul class="text-muted small pl-3">
+                <li class="mb-2"><strong>Documentación & Governance:</strong> Mantenimiento de arquitecturas de datos en Confluence y trazabilidad ETL.</li>
+                <li class="mb-2"><strong>Gestión Ágil:</strong> Administración del SDLC bajo metodologías ágiles en ecosistema Atlassian (Jira).</li>
+                <li><strong>Capacitación Técnica:</strong> Desarrollo de contenido multimedia y administración de Moodle para transferencia de conocimiento.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
         <section class="resume-section" id="projects">
     <h3 class="mb-5 text-uppercase font-weight-800" style="letter-spacing: 3px;">Featured Projects</h3>
     <div class="row">
@@ -152,7 +184,7 @@
             <span class="badge-tech">Logística</span>
         </div>
         <div class="mt-4">
-            <a href="https://jonatanh225.github.io/VRPOptimax/" class="btn btn-sm btn-primary px-3 mr-2">
+            <a href="https://jonatanh225.github.io/VRPOptimax/" class="btn btn-sm btn-primary px-3 mr-2 font-weight: bold;">
                 <i class="fas fa-download mr-1"></i> DESCARGAR
             </a>
             <a href="https://github.com/JonatanH225/UniminutoVRP" target="_blank" class="btn btn-sm btn-outline-light px-3">
@@ -175,35 +207,34 @@
             <span class="badge-tech">Telemetry Analysis</span>
             <span class="badge-tech">UI/UX Design</span>
         </div>
-        <div class="mt-4">
-            <a href="https://app.powerbi.com/view?r=eyJrIjoiNGI0NDJkMTktNTc3NS00ZjZiLWFlMmMtZjVkZjM5ODRlYzkyIiwidCI6ImI0OWRiNjI0LTI1NDYtNDI1OS1iZjM2LTE5OWM2ZTk4ODAzMyIsImMiOjR9" 
+        <div class="mt-4 d-flex align-items-center" style="gap: 8px;">
+    <a href="https://app.powerbi.com/view?r=eyJrIjoiNGI0NDJkMTktNTc3NS00ZjZiLWFlMmMtZjVkZjM5ODRlYzkyIiwidCI6ImI0OWRiNjI0LTI1NDYtNDI1OS1iZjM2LTE5OWM2ZTk4ODAzMyIsImMiOjR9" 
        target="_blank" 
-       class="btn btn-sm px-3 shadow-sm"
-       style="background-color: #00f2fe; border-color: #00f2fe; color: #000; font-weight: bold;">
+       class="btn btn-sm btn-main-project px-3">
         <i class="fas fa-external-link-alt mr-1"></i> EXPLORAR DASHBOARD
     </a>
 
     <a href="assets/dashboard.pdf" 
        target="_blank" 
-       class="btn btn-sm btn-outline-light px-3" 
+       class="btn btn-sm btn-secondary-icon px-3" 
        title="Ver Documentación (PDF)">
         <i class="fas fa-file-pdf"></i>
     </a>
 
-    <a href="javascript:void(0)" 
-       onclick="downloadFile('assets/HSEQ.pbix', 'HSEQ_JonatanHernandez.pbix')"
-       class="btn btn-sm btn-outline-light px-3" 
+    <a href="assets/HSEQ.pbix" 
+       download="HSEQ_JonatanHernandez.pbix"
+       class="btn btn-sm btn-secondary-icon px-3" 
        title="Descargar Plantilla (.PBIX)">
         <i class="fas fa-file-invoice"></i>
     </a>
 
     <a href="assets/telemetria_optimizada.json" 
        download="ejemplo.json" 
-       class="btn btn-sm btn-outline-light px-3" 
+       class="btn btn-sm btn-secondary-icon px-3" 
        title="Descargar Datos de Prueba (JSON)">
         <i class="fas fa-file-code"></i>
     </a>
-        </div>
+</div>
     </div>
 </div>
 

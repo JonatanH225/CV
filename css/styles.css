@@ -10,16 +10,18 @@
     --primary: #00d2ff;
     --accent-red: #cc0000;
     --font-main: 'Exo 2', sans-serif;
+    --shadow-light: 0 4px 15px rgba(0, 210, 255, 0.3);
 }
 
 [data-theme="light"] {
-    /* MODO CLARO - CORRECCIÓN DE COLORES */
+    /* MODO CLARO */
     --bg-color: #ffffff;
     --sidebar-bg: #f8f9fa;
     --card-bg: #f1f3f5;
-    --text-main: #1a1d23; /* Esto arregla el nombre y textos principales */
-    --text-muted: #4a4a4a; /* Esto arregla el subtítulo que no veías */
+    --text-main: #1a1d23;
+    --text-muted: #4a4a4a;
     --primary: #007bff;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -27,6 +29,22 @@ body {
     color: var(--text-main);
     font-family: var(--font-main);
     transition: all 0.3s ease;
+}
+
+/* --- EFECTO DE LEVANTE GLOBAL PARA BOTONES --- */
+.btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* Efecto de levantarse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más profunda */
+}
+
+.btn:active {
+    transform: translateY(-1px); /* Efecto de presionar */
 }
 
 /* --- SIDEBAR --- */
@@ -40,7 +58,7 @@ body {
     z-index: 1000;
 }
 
-/* --- TEXTOS (Asegurando visibilidad en Light) --- */
+/* --- TEXTOS --- */
 h1, h2, h3, .h4, .lead, .subheading {
     color: var(--text-main) !important;
 }
@@ -49,7 +67,7 @@ h1, h2, h3, .h4, .lead, .subheading {
     color: var(--text-muted) !important;
 }
 
-/* --- BOTONES Y SOCIAL (LinkedIn fix) --- */
+/* --- BOTONES Y SOCIAL --- */
 .btn-outline-light {
     color: var(--text-main) !important;
     border-color: var(--text-main) !important;
@@ -68,24 +86,28 @@ h1, h2, h3, .h4, .lead, .subheading {
     border-radius: 12px;
     padding: 2rem;
     height: 100%;
-    transition: transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.custom-card:hover { transform: translateY(-5px); }
+.custom-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
 
 #wrapper {
     margin-left: 260px;
     padding: 0 5%;
 }
 
-/* --- AJUSTE DE LA IMAGEN DE PERFIL --- */
+/* --- IMAGEN DE PERFIL Y LOGO --- */
 .img-profile {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border: 4px solid var(--primary);
     border-radius: 50%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     display: block;
+    object-fit: cover;
 }
 
 .theme-switch {
@@ -95,66 +117,30 @@ h1, h2, h3, .h4, .lead, .subheading {
     z-index: 2000;
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 992px) {
     #sideNav { width: 100%; height: auto; position: relative; }
     #wrapper { margin-left: 0; }
+    #about { padding-top: 5rem !important; }
 }
 
-/* Selector específico para el nombre bajo la foto en el sidebar */
-#sideNav h5, 
-#sideNav .sidebar-name,
-#sideNav h4 {
-    color: var(--text-main) !important;
-    transition: color 0.3s ease;
-}
-
-/* En modo claro, si quieres que el nombre resalte más sobre el fondo grisáceo */
-[data-theme="light"] #sideNav h5,
-[data-theme="light"] #sideNav .sidebar-name {
-    color: #1a1d23 !important; /* Un tono oscuro sólido */
-}
-
-/* 1. Espaciado general de las secciones */
+/* --- SECCIONES --- */
 .resume-section {
-    padding-top: 2rem !important;    /* Más espacio arriba */
-    padding-bottom: 2rem !important; /* Más espacio abajo */
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
     border-bottom: 1px solid rgba(128,128,128,0.1);
 }
 
-/* 2. Espaciado específico para los títulos de sección (Technical Stack, Proyectos, etc) */
-h3.text-uppercase, 
-.resume-section h3 {
-    margin-top: 2rem !important;    /* Separa el título del contenido anterior */
-    margin-bottom: 2rem !important; /* Separa el título de las tarjetas de abajo */
-    letter-spacing: 4px;            /* Un toque más de tracking para Exo 2 */
-}
+#about { padding-top: 10rem !important; }
 
-/* 3. Ajuste para la primera sección (Inicio) para que no quede tan abajo */
-#about {
-    padding-top: 10rem !important;
-}
-
-/* 4. Ajuste del nombre en el Sidebar para que no esté pegado a la foto */
-#sideNav h4, 
-#sideNav h5 {
-    margin-top: 1.5rem !important;
-    margin-bottom: 0.5rem !important;
-}
-
-/* Colores de Categoría */
+/* --- STACK TÉCNICO & CATEGORÍAS --- */
 .card-cloud { border-top: 5px solid #ff9900 !important; }
 .card-dev { border-top: 5px solid #00d2ff !important; }
 .card-ai { border-top: 5px solid #ff4b2b !important; }
 .card-analytics { border-top: 5px solid #00f2fe !important; }
+.card-management { border-top: 5px solid #a855f7 !important; }
 
-/* Estilo de Burbujas de Expertise */
-.expertise-pills {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
+/* --- PILLS (Burbujas) --- */
 .pill {
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -168,61 +154,290 @@ h3.text-uppercase,
     transition: all 0.3s ease;
 }
 
-/* Efecto hover por categoría para las burbujas */
+/* Hover dinámico por categoría */
 .card-cloud:hover .pill { background: rgba(255, 153, 0, 0.1); color: #ff9900; border-color: #ff9900; }
 .card-dev:hover .pill { background: rgba(0, 210, 255, 0.1); color: #00d2ff; border-color: #00d2ff; }
 .card-ai:hover .pill { background: rgba(255, 75, 43, 0.1); color: #ff4b2b; border-color: #ff4b2b; }
 .card-analytics:hover .pill { background: rgba(0, 242, 254, 0.1); color: #00f2fe; border-color: #00f2fe; }
 
-/* Ajuste de los iconos para que brillen un poco */
-.custom-card i {
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.1));
-    transition: transform 0.3s ease;
-}
-
-.custom-card:hover i {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Color para Gestión y Metodologías (Morado/Elegante) */
-.card-management { border-top: 5px solid #a855f7 !important; }
-
-/* Efecto hover para la nueva categoría */
-.card-management:hover .pill { 
-    background: rgba(168, 85, 247, 0.1); 
-    color: #a855f7; 
-    border-color: #a855f7; 
-}
-
-/* Colores de Categoría para Proyectos */
+/* --- PROYECTOS ESPECÍFICOS --- */
 .border-ia { border-left: 5px solid #ff4b2b !important; }
 .border-analytics { border-left: 5px solid #00f2fe !important; }
 .border-aws { border-left: 5px solid #ff9900 !important; }
 .border-dev { border-left: 5px solid #00d2ff !important; }
-
-/* Etiquetas (Badges) flotantes */
-.project-tag {
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    display: inline-block;
-}
 
 .tag-ia { background: rgba(255, 75, 43, 0.2); color: #ff4b2b; }
 .tag-analytics { background: rgba(0, 242, 254, 0.2); color: #00f2fe; }
 .tag-aws { background: rgba(255, 153, 0, 0.2); color: #ff9900; }
 .tag-dev { background: rgba(0, 210, 255, 0.2); color: #00d2ff; }
 
+/* --- BOTÓN ESPECÍFICO PARA PROYECTOS DE IA --- */
 .border-ia .btn-primary {
-    background: #ff4b2b;
-    border-color: #ff4b2b;
+    background-color: #ff4b2b !important;
+    border-color: #ff4b2b !important;
+    color: #050608 !important;
+    font-weight: bold;
     box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
 }
 
 .border-ia .btn-primary:hover {
-    background: #e63e1f;
+    background-color: #ff310d !important; /* Un rojo un poco más oscuro al presionar */
+    border-color: #ff310d !important;
+    box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5); /* Brillo neón rojo */
+    transform: translateY(-3px);
+}
+
+/* Para mantener la armonía con los iconos de la tarjeta de IA */
+.border-ia .btn-outline-light:hover {
+    color: #ff4b2b !important;
+    border-color: #ff4b2b !important;
+}
+
+/* --- EFECTO GLOW PARA BOTONES DE PROYECTOS --- */
+
+/* Brillo para Proyectos de IA (Rojo/Naranja) */
+.border-ia .btn:hover {
+    box-shadow: 0 0 20px rgba(255, 75, 43, 0.7) !important;
+}
+
+/* Brillo para Proyectos de Analytics (Cian/Azul claro) */
+.border-analytics .btn:hover {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.7) !important;
+}
+
+/* Brillo para Proyectos de AWS (Naranja) */
+.border-aws .btn:hover {
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.7) !important;
+}
+
+/* Brillo para Proyectos de Development (Azul) */
+.border-dev .btn:hover {
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.7) !important;
+}
+
+/* Brillo especial para el botón principal de Analytics que tiene clase propia */
+.btn-main-project:hover {
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.8) !important;
+}
+
+/* --- COLOR DE FONDO PARA BOTONES DE PROYECTOS --- */
+
+/* Nota: El color para .border-ia .btn-primary ya lo tenías definido. */
+
+/* Color para Botones Principales de Analytics (Cian/Azul claro) */
+.border-analytics .btn-primary,
+.btn-main-project {
+    background-color: #00f2fe !important;
+    border-color: #00f2fe !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    font-weight: bold;
+}
+
+.border-analytics .btn-primary:hover,
+.btn-main-project:hover {
+    background-color: #00d9e4 !important; /* Un tono más oscuro al pasar el mouse */
+    border-color: #00d9e4 !important;
+}
+
+/* Color para Botones Principales de AWS (Naranja) */
+.border-aws .btn-primary {
+    background-color: #ff9900 !important;
+    border-color: #ff9900 !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    font-weight: bold;
+}
+
+.border-aws .btn-primary:hover {
+    background-color: #e68a00 !important; /* Un tono más oscuro al pasar el mouse */
+    border-color: #e68a00 !important;
+}
+
+/* Color para Botones Principales de Development (Azul) */
+.border-dev .btn-primary {
+    background-color: #00d2ff !important;
+    border-color: #00d2ff !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    font-weight: bold;
+}
+
+.border-dev .btn-primary:hover {
+    background-color: #00b3d9 !important; /* Un tono más oscuro al pasar el mouse */
+    border-color: #00b3d9 !important;
+}
+
+/* --- ESTILO PARA BOTONES DE ICONOS SECUNDARIOS (PDF, PBIX, JSON) --- */
+.btn-secondary-icon {
+    color: rgba(255, 255, 255, 0.7) !important; /* Blanco con transparencia para que no distraiga demasiado */
+    background: rgba(255, 255, 255, 0.05); /* Un fondo sutil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-icon:hover {
+    color: #ffffff !important; /* Blanco puro al pasar el mouse */
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
     transform: translateY(-2px);
+    /* Opcional: glow blanco suave */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Ajuste específico para que los iconos de FontAwesome hereden el color */
+.btn-secondary-icon i {
+    color: inherit;
+}
+
+/* --- UNIFICACIÓN DE BOTONES SECUNDARIOS --- */
+
+/* 1. Estado Base: Blanco y Negro (Ghost style) */
+.btn-outline-light, 
+.btn-secondary-icon,
+.border-ia .btn-outline-light,
+.border-analytics .btn-outline-light,
+.border-aws .btn-outline-light,
+.border-dev .btn-outline-light {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 2. Hover Dinámico: Toma el color de la tarjeta */
+
+/* Proyectos de IA -> Rojo */
+.border-ia .btn-outline-light:hover,
+.border-ia .btn-secondary-icon:hover {
+    background-color: #ff4b2b !important;
+    border-color: #ff4b2b !important;
+    color: #050608 !important;
+    box-shadow: 0 0 15px rgba(255, 75, 43, 0.6) !important;
+}
+
+/* Proyectos de Analytics -> Cian */
+.border-analytics .btn-outline-light:hover,
+.border-analytics .btn-secondary-icon:hover {
+    background-color: #00f2fe !important;
+    border-color: #00f2fe !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.6) !important;
+}
+
+/* Proyectos de AWS -> Naranja */
+.border-aws .btn-outline-light:hover,
+.border-aws .btn-secondary-icon:hover {
+    background-color: #ff9900 !important;
+    border-color: #ff9900 !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.6) !important;
+}
+
+/* Proyectos de Development -> Azul */
+.border-dev .btn-outline-light:hover,
+.border-dev .btn-secondary-icon:hover {
+    background-color: #00d2ff !important;
+    border-color: #00d2ff !important;
+    color: #050608 !important; /* Texto oscuro para contraste */
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6) !important;
+}
+
+/* Asegurar que los iconos internos cambien de color con el texto */
+.btn i {
+    color: inherit !important;
+}
+
+/* Hover dinámico para la categoría de Metodologías */
+.card-management:hover .pill { 
+    background: rgba(168, 85, 247, 0.1); 
+    color: #a855f7; 
+    border-color: #a855f7; 
+}
+
+/* --- ESTILOS DE LA LÍNEA DE TIEMPO --- */
+.timeline {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(128, 128, 128, 0.2);
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+/* El punto de la línea de tiempo */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -1.65rem; /* Ajuste para centrar sobre la línea */
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 3px solid var(--primary);
+    z-index: 1;
+}
+
+/* Colores específicos para los puntos del timeline */
+.timeline-item.border-analytics::before { border-color: #00f2fe; }
+.timeline-item.border-management::before { border-color: #a855f7; }
+
+.timeline-date {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item ul {
+    list-style-type: none;
+}
+
+.timeline-item ul li::before {
+    content: "▹";
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Ajuste de color morado para la segunda experiencia */
+.timeline-item.border-management ul li::before {
+    color: #a855f7;
+}
+
+/* --- AJUSTE ESPECÍFICO PARA MODO CLARO (LIGHT MODE) --- */
+
+/* 1. Cambiar color base a oscuro para que sea visible */
+[data-theme="light"] .btn-outline-light, 
+[data-theme="light"] .btn-secondary-icon {
+    color: #1a1d23 !important; /* Mismo color de texto principal oscuro */
+    border-color: rgba(0, 0, 0, 0.2) !important; /* Borde sutil oscuro */
+}
+
+/* 2. Mantener el comportamiento del hover dinámico */
+/* Al pasar el mouse, el botón se rellena con el color de la tarjeta, 
+   así que el texto debe volver a ser blanco (o el color de contraste que definimos).
+   Estas reglas aseguran que el hover sobrescriba el cambio de color de arriba. */
+
+[data-theme="light"] .border-ia .btn-outline-light:hover,
+[data-theme="light"] .border-ia .btn-secondary-icon:hover {
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .border-analytics .btn-outline-light:hover,
+[data-theme="light"] .border-analytics .btn-secondary-icon:hover {
+    color: #050608 !important; /* Mantiene texto oscuro sobre celeste claro */
+}
+
+[data-theme="light"] .border-aws .btn-outline-light:hover,
+[data-theme="light"] .border-aws .btn-secondary-icon:hover {
+    color: #050608 !important; /* Mantiene texto oscuro sobre naranja claro */
+}
+
+[data-theme="light"] .border-dev .btn-outline-light:hover,
+[data-theme="light"] .border-dev .btn-secondary-icon:hover {
+    color: #050608 !important; /* Mantiene texto oscuro sobre azul claro */
 }
